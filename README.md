@@ -1,5 +1,7 @@
 # 572godrays
-Final Project for 572 - Graduate Graphics Postprocessing
+Final Project for CSC 572 - Graduate Graphics Postprocessing
+
+Created a godray postprocessing effect. 
 
 ## Controls
 | Buttons | Effect |
