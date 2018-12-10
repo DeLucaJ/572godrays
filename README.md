@@ -1,7 +1,9 @@
 # Godrays / Light Scattering
 Final Project for CSC 572 - Graduate Graphics Postprocessing
 
-Created a godray postprocessing effect. 
+This project uses a postproccessing pipeline in order to simulate the "Godray" effect. "Godrays" are the rays of light eminating from large light sources like the sun. They become most visible when the light is being eclipsed by passing objects such as clouds. 
+
+[Sourcecode](https://github.com/DeLucaJ/572godrays)
 
 ## Controls
 | Buttons | Effect |
@@ -13,6 +15,21 @@ Created a godray postprocessing effect.
 | 3,4 | +/- decay by 0.1f |
 | 5,6 | +/- density by 0.1f |
 | 7,8 | +/- weight by 0.5f |
+
+### Exposure
+This variable causes the lighting effect to become more extreme. It creates darker shadows and brighter lights.
+
+### Decay
+This variable alters the weight of each subsequent sample in the fragment shader loop multiplicatively. Increasing it above 1 creates strange pixelated distortions which are caused from the light source being too heavily sampled. 
+
+### Density
+This determines the closeness of the samples. The lower density is the shorter the rays become.
+
+### Weight
+This is the overall intensity of the light source. The higher the weight, the more heavily sampled the light source becomes. Unlike decay, this is a constant and does not scale multiplicatively. 
+
+## Overview of Pipeline
+![Basic Overview of pipeline](https://github.com/DeLucaJ/572godrays/blob/master/screenshots/pipeline.png "Pipeline")
 
 ## Development Images
 ### Initial Scene
