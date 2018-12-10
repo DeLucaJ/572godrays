@@ -43,8 +43,6 @@ void main()
 
     godray *= exposure;
 
-	//apply godray to normal
 	vec4 normal_col = texture(colorPass, fragTex);
 	color = (normal_col + godray) /1.0f; 
-	//color = godray;
 }

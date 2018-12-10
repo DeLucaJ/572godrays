@@ -180,8 +180,8 @@ public:
 		//godray controls
 		if (key == GLFW_KEY_1 && action == GLFW_PRESS) exposure += 0.0001f;
 		if (key == GLFW_KEY_2 && action == GLFW_PRESS) exposure -= 0.0001f;
-		if (key == GLFW_KEY_3 && action == GLFW_PRESS) decay += 0.1f;
-		if (key == GLFW_KEY_4 && action == GLFW_PRESS) decay -= 0.1f;
+		if (key == GLFW_KEY_3 && action == GLFW_PRESS) decay += 0.001f;
+		if (key == GLFW_KEY_4 && action == GLFW_PRESS) decay -= 0.001f;
 		if (key == GLFW_KEY_5 && action == GLFW_PRESS) density += 0.1f;
 		if (key == GLFW_KEY_6 && action == GLFW_PRESS) density -= 0.1f;
 		if (key == GLFW_KEY_7 && action == GLFW_PRESS) weight += 0.5f;

@@ -1,0 +1,205 @@
+<html>
+<head>
+  <title>CSC 471 Music Visualizer Final Project</title>
+
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: white;
+      color: #333333;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      font-family: "Source Sans Pro", Helvetica;
+    }
+
+    img {
+      display: block;
+    }
+
+    em {
+      font-size: 12px;
+    }
+
+    #signature {
+      margin-left: 30px;
+      font-style: oblique;
+    }
+
+    a:link,
+    a:visited {
+      color: #165788;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      width: 660px;
+      margin: auto;
+    }
+
+    .container {
+      width: 660px;
+      margin: auto;
+    }
+
+    #content {
+      width: 650px;
+      margin: 70px auto 0px auto;
+    }
+
+    #content article {
+      margin-bottom: 150px;
+    }
+
+    #content h1,
+    #content h2 {
+      color: black;
+      margin-bottom: 30px;
+      font-weight: 200;
+      font-size: 48px;
+    }
+
+    #content h3 {
+      color: black;
+      border-bottom: 1px solid black;
+      text-transform: uppercase;
+      margin: 30px 0px 30px 0px;
+      font-size: 28px;
+      font-weight: 200;
+    }
+
+    #content p {
+      width: 100%;
+      line-height: 150%;
+      margin-bottom: 20px;
+    }
+
+    #content p:first-child {
+      font-size: 18px;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    #content p:first-child:first-line {
+        font-weight: bold;
+    }
+  
+    #content ul {
+        padding-left:25px
+    }
+
+    pre {
+      font-size: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #ddd;
+    }
+  </style>
+</head>
+
+<body><div class="wrapper"><section id="content">
+
+<h1>Abstract Music Visualizer</h1>
+
+<h4>Gabriella Santiago - CSC 471 - Spring 2018 - Christian Eckhardt</h4>
+
+<article> <!-- This adds padding at the top and bottom -->
+
+
+
+
+<h3>Project Description</h3>
+
+<p>For my final project in CSC 471 I chose to do a music visualizer. A music visualizer is a visual component that takes music as input and the graphics animate according to the data of that input. I chose to create a music visualizer because it is a unique challenge to take varying data such as sound and turn it into a visual graphic. </p>
+
+<p>Technical graphics implementations include:
+  <ul>
+    <li>Hierarchical Modeling</li>
+    <li>Using uniform variables to change color</li>
+    <li>Keyboard input</li>
+    <li>fftw Libraries</li>
+    <li>Frame buffering</li>
+    <li>Post-processing</li>
+  </ul>
+</p>
+
+<!-- A Centered image-->
+<center>
+  <a>
+    <img src="milestone3_2.png" width="100%">
+  </a>
+  <em>Screenshot of music visualizer</em>
+</center>
+
+
+
+
+<h3>Milestones</h3>
+<h4>Milestone 1</h4>
+<p>In this milestone, I had to understand the music visualizer base code and how to change the graphics according to the sound. For the first iteration, when a low note is played, the sphere will scale up. When a high note is played, the cube will scale up. This milestone was crucial in implementing basic functionality. All other visuals were built upon this initial step.</p>
+<center>
+  <a>
+    <img src="milestone1.png" width="100%">
+  </a>
+  <em>Screenshot from Milestone 1.</em>
+</center>
+
+<h4>Milestone 2</h4>
+<p>In this milestone, I refined the visuals. I added several more models, implemented hierarchical modeling, and used a frame buffer to give the objects a glowing effect. I also made the program more interactive by adding keyboard functions, allowing the user to look at the visualizer object from many different angles.</p>
+<center>
+  <a>
+    <img src="milestone2.png" width="100%">
+  </a>
+  <em>Screenshot from Milestone 2.</em>
+</center>
+
+<h4>Milestone 3</h4>
+<p>In this milestone, I improved the visuals and added more functionality. I also added a post-processing effect that will allow the user to increase the number of windows the visualizer has. Additionally, the glowing effect was improved to look less pixelated, and the glow can be toggled on and off.</p>
+<center>
+  <a>
+    <img src="milestone3_1.png" width="100%">
+  </a>
+  <em>Screenshot from Milestone 3.</em>
+</center>
+
+<h4>Functionality</h4>
+  <ul>
+    <li>A and D keys rotate the object around the y-axis</li>
+    <li>W and S keys move the camera forward and backward</li>
+    <li>Q and E keys rotate the object around the z-axis</li>
+    <li>Spacebar puts the object and camera back in their original positions</li>
+    <li>F and G keys toggle the glowing effect</li>
+    <li>R key adds windows/ multiplies the frame buffer texture</li>
+
+<h3>Final Product</h3>
+<p>Here is a demonstration of the final product. Apologies for the poor video and sound quality. In the demonstration, the glow is toggled on, and the object is moved in different angles as the music plays.
+<center>
+  <a>
+    <video width=100% controls>
+      <source src="milestone3_final.mp4" type="video/mp4">
+    </video>
+  </a>
+</center>
+
+<p>
+</p>
+<h4> Some Things of Note</h4>
+<p> I learned that volume has a great effect on how the graphics behave. When testing on my laptop, I had to make sure the volume was at 100% in order to see a more compelling result. But when played on a more powerful machine, such as a desktop, I learned that the volume didn't have to be at 100%. This is because of the way the Stereo Mix works on each machine; no two machines are alike! </p>
+
+<h3>Resources</h3>
+<ul>
+  <a href="musicvis.zip" download="musicvis">Download Music Visualizer</a>
+</ul>
+
+</article></section></div></body></html>
