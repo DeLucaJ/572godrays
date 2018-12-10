@@ -1,0 +1,186 @@
+<html>
+<head>
+  <title>CSC 572 Postprocessing Godrays Final Project</title>
+
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: white;
+      color: #333333;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      font-family: "Source Sans Pro", Helvetica;
+    }
+
+    img {
+      display: block;
+    }
+
+    em {
+      font-size: 12px;
+    }
+
+    #signature {
+      margin-left: 30px;
+      font-style: oblique;
+    }
+
+    a:link,
+    a:visited {
+      color: #165788;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      width: 1300px;
+      margin: auto;
+    }
+
+    .container {
+      width: 1300px;
+      margin: auto;
+    }
+
+    #content {
+      width: 1200px;
+      margin: 70px auto 0px auto;
+    }
+
+    #content article {
+      margin-bottom: 150px;
+    }
+
+    #content h1,
+    #content h2 {
+      color: black;
+      margin-bottom: 30px;
+      font-weight: 200;
+      font-size: 48px;
+    }
+
+    #content h3 {
+      color: black;
+      border-bottom: 1px solid black;
+      text-transform: uppercase;
+      margin: 30px 0px 30px 0px;
+      font-size: 28px;
+      font-weight: 200;
+    }
+
+    #content p {
+      width: 100%;
+      line-height: 150%;
+      margin-bottom: 20px;
+    }
+
+    #content p:first-child {
+      font-size: 18px;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    #content p:first-child:first-line {
+        font-weight: bold;
+    }
+  
+    #content ul {
+        padding-left:25px
+    }
+
+    pre {
+      font-size: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #ddd;
+    }
+  </style>
+</head>
+
+<body><div class="wrapper"><section id="content">
+
+<h1>Godrays / Light Scattering</h1>
+
+<h4>Joseph DeLuca - CSC 572 - Fall 2018 - Christian Eckhardt</h4>
+
+<article> <!-- This adds padding at the top and bottom -->
+
+<p>Final Project for CSC 572 - Graduate Graphics Postprocessing</p>
+<p>This project uses a postproccessing pipeline in order to simulate the “Godray” effect. “Godrays” are the rays of light eminating from large light sources like the sun. They become most visible when the light is being eclipsed by passing objects such as clouds.</p>
+<p><a href="https://github.com/DeLucaJ/572godrays">Sourcecode</a></p>
+<h2 id="controls">Controls</h2>
+
+<table>
+<thead>
+<tr>
+<th>Buttons</th>
+<th align="left">Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WASD</td>
+<td align="left">camera movement</td>
+</tr>
+<tr>
+<td>IJKL</td>
+<td align="left">earth/lightsource movement</td>
+</tr>
+<tr>
+<td>Y</td>
+<td align="left">enable/disable godrays</td>
+</tr>
+<tr>
+<td>1,2</td>
+<td align="left">+/- exposure 0.0001f</td>
+</tr>
+<tr>
+<td>3,4</td>
+<td align="left">+/- decay by 0.1f</td>
+</tr>
+<tr>
+<td>5,6</td>
+<td align="left">+/- density by 0.1f</td>
+</tr>
+<tr>
+<td>7,8</td>
+<td align="left">+/- weight by 0.5f</td>
+</tr>
+</tbody>
+</table><h3 id="exposure">Exposure</h3>
+<p>This variable causes the lighting effect to become more extreme. It creates darker shadows and brighter lights.</p>
+<h4 id="decay">Decay</h4>
+<p>This variable alters the weight of each subsequent sample in the fragment shader loop multiplicatively. Increasing it above 1 creates strange pixelated distortions which are caused from the light source being too heavily sampled.</p>
+<h3 id="density">Density</h3>
+<p>This determines the closeness of the samples. The lower density is the shorter the rays become.</p>
+<h3 id="weight">Weight</h3>
+<p>This is the overall intensity of the light source. The higher the weight, the more heavily sampled the light source becomes. Unlike decay, this is a constant and does not scale multiplicatively.</p>
+<h2 id="overview-of-pipeline">Overview of Pipeline</h2>
+<p><img src="screenshots/pipeline.png" alt="Basic Overview of pipeline" title="Pipeline"></p>
+<h2 id="development-images">Development Images</h2>
+<h3 id="initial-scene">Initial Scene</h3>
+<p>No godray shader has been applied to the scene yet.<br>
+<img src="no_godrays.png" alt="Initial Scene" title="Initial Scene"></p>
+<h3 id="stage-1---occlusion-of-light-source">Stage 1 - Occlusion of light source</h3>
+<p>The scene is rendered with the light source as white and everything else as black. The light source is the Earth from the previous scene.<br>
+<img src="screenshots/godrays_stage_1.png" alt="Occlusion of light source" title="Occlusion"></p>
+<h3 id="stage-2---scattering-the-light-source">Stage 2 - Scattering the Light Source</h3>
+<p>The previous stage is then run through my shader godray.frag, which samples towards the light source in order to create the scattering effect.<br>
+<img src="screenshots/godrays_stage_2.png" alt="Scattering light source" title="Scattering"></p>
+<h3 id="stage-3---blending-initial-scene-with-godrays">Stage 3 - Blending Initial Scene with Godrays</h3>
+<p>The initial scene texture and the stage 2 godray texture are then blended together to create the final godray effect.<br>
+<img src="screenshots/godrays1.png" alt="Behind a Pillar" title="Behind a Pillar"><br>
+<img src="screenshots/godrays2.png" alt="Partial Lunar Eclipse" title="Partial Lunar Eclipse"></p>
+
+</article></section></div></body></html>
