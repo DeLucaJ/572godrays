@@ -1,4 +1,4 @@
-# 572godrays
+# Godrays / Light Scattering
 Final Project for CSC 572 - Graduate Graphics Postprocessing
 
 Created a godray postprocessing effect. 
